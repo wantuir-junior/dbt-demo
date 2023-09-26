@@ -33,9 +33,9 @@ final as (
         customer.account_balance,
         customer.marketing_segment,
         
+        orders.customer_key,
         orders.order_key, 
         orders.order_date,
-        orders.customer_key,
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
