@@ -38,3 +38,43 @@ models:
         description: item level tax total
       - name: net_item_sales_amount
         description: the net total which factors in discount and tax
+
+  - name: dim_customer
+    description: customer dimension table
+    columns:
+      - name: customer_key
+        description: primary key of the model
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('stg_tpch_customer')
+              field: customer_key
+              severity: warn
+      - name: customer_name
+        description: name of customer
+      - name: account_balance
+        description: customer's current account balance
+      - name: marketing_segment
+        description: customer marketing segment
+      - name: order_key
+        description: order ID
+      - name: order_date
+        description: date of the order
+      - name: status_code
+        description: status of the order
+        tests:
+          - accepted_values:
+              values: ['P','O','F']
+      - name: priority_code
+        description: code associated with the order
+      - name: ship_priority
+        description: numeric representation of the shipping priority, zero being the default
+      - name: gross_item_sales_amount
+        description: '{{ doc("gross_item_sales_amount") }}'
+      - name: item_discount_amount
+        description: item level discount amount. this is always less than or equal to zero
+      - name: item_tax_amount
+        description: item level tax total
+      - name: net_item_sales_amount
+        description: the net total which factors in discount and tax
