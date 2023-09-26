@@ -7,13 +7,19 @@ sources:
     tables:
       - name: orders
         description: main order tracking table
-        
         columns:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
             tests: 
               - unique
               - not_null
+
+          - name: o_custkey
+            description: Foreign Key to C_CUSTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'customers')
+                  field: c_custkey
 
       - name: lineitem
         description: main lineitem table
@@ -24,3 +30,13 @@ sources:
               - relationships:
                   to: source('tpch', 'orders')
                   field: o_orderkey
+
+      - name: customers
+        description: customer data table
+        columns:
+          - name: c_custkey
+            description: SF*150,000 are sparsely populated
+            tests: 
+              - unique
+              - not_null
+              
