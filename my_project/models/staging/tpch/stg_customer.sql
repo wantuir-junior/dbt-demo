@@ -8,7 +8,7 @@ renamed as (
 
     select
 
-        c_cust_key as customer_key,
+        c_custkey as customer_key,
         c_name as customer_name,
         c_address as customer_address,
         c_nationkey as nationkey,

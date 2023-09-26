@@ -31,7 +31,7 @@ sources:
                   to: source('tpch', 'orders')
                   field: o_orderkey
 
-      - name: customers
+      - name: customer
         description: customer data table
         columns:
           - name: c_custkey
@@ -39,4 +39,3 @@ sources:
             tests: 
               - unique
               - not_null
-              
