@@ -29,11 +29,12 @@ final as (
 
     select 
 
+        orders.customer_key,
+
         customer.customer_name,
         customer.account_balance,
         customer.marketing_segment,
         
-        orders.customer_key,
         orders.order_key, 
         orders.order_date,
         orders.status_code,
